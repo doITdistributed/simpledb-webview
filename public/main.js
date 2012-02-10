@@ -5,7 +5,6 @@ $(function(){
   // Credentials
   //
   //*****************************************************************
-  
   //
   // Credentials: Model
   //
@@ -249,6 +248,7 @@ $(function(){
       }
       
       // Build table HTML object
+
       var $table = this.buildTable(this.collection.toJSON());
       this.$('.contents').html($table);
 
@@ -284,6 +284,8 @@ $(function(){
       });
     },
     
+	
+
     // Returns a consolidated table (jQuery object format) containing all the rows in the vector 'data'.
     // The columns are consolidated to account for heterogenous data, i.e. rows with different schema.
     buildTable: function(data){
@@ -307,13 +309,14 @@ $(function(){
         $('<th></th>').html(field).appendTo($tHead);
         templateStr += '<td>${'+self.encodeHtml(field)+'}</td>';
       });
-      
+
       // Build table body
       var $tBody = $('<tbody></tbody>').appendTo($table);
       templateStr = '<tr>'+templateStr+'</tr>';
       $.template('dataTemplate', templateStr);
+//	alert(templateStr);
       $.tmpl('dataTemplate', data).appendTo($tBody);
-      
+
       return $table; 
     },
     
@@ -351,7 +354,7 @@ $(function(){
   itemsView = new ItemsView({
     collection: items
   });
-  
+
 
   //****************************************************************
   //
